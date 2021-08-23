@@ -60,14 +60,7 @@ const Movies = (props) => {
 			</div>
 		);
 	};
-	/*
-///////////////////////////
- BOOTSTRAP-MODAL -> ANVÄND USESTATE BOOLEAN FÖR ATT STYRA IN I MODAL -> NÄR MODAL ÄR FIXAD, SKAPA USEEFFECT SÅ MAN KAN FÅ FRAM KARAKTÄRERNA OCH EJ LÄNKAR
- KAN ANVÄNDA ANNAN TYP AV MODAL, GÖR EFTERFORSKNING PÅ DETTA. 
- SKAPA ALLT I FUNCTIONS OCH KÖR TERNARY MED FUNCTIONS, LÄTTARE ATT FÖRSTÅ. 
- KAN SLÄNGA IN CHARACTERS I SIN EGEN KOMPONENT OM DET BEGÄRS.
-//////////////////////////
-	*/
+
 	return <>{watchSpecific ? defaultPage() : Modal()}</>;
 };
 
