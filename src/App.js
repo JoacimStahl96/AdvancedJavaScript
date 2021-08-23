@@ -1,25 +1,49 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import Movies from "./components/movies";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+	const [data, setData] = useState([]);
+	const [loading, isLoading] = useState(false);
+
+	useEffect(() => {
+		const fetchData = async () => {
+			let res = await fetch("https://swapi.dev/api/films");
+			let apiData = await res.json();
+
+			setData(apiData.results);
+
+			setData((currentList) => [
+				...currentList.sort((s, w) => s.release_date - w.release_date),
+			]);
+			isLoading(true);
+		};
+		fetchData();
+	}, []);
+
+	const loadingPage = () => {
+		return (
+			<div className="App">
+				<p>Loading....</p>
+			</div>
+		);
+	};
+
+	const pageLoaded = () => {
+		return (
+			<div className="App">
+				{data.map((info, index) => (
+					<Movies
+						key={index}
+						titles={info.title}
+						characters={info.characters}
+						releaseDate={info.release_date}
+					/>
+				))}
+			</div>
+		);
+	};
+
+	return <>{loading ? pageLoaded() : loadingPage()}</>;
 }
 
 export default App;
