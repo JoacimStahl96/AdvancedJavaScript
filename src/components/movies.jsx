@@ -28,7 +28,7 @@ const Movies = (props) => {
 
 	const Modal = () => {
 		return (
-			<div className="modal" onClick={handleWatchSingleMovieInfo}>
+			<div className="modal">
 				<div className="modal-content">
 					<div className="modal-header">
 						<h2>{titles}</h2>
@@ -42,7 +42,9 @@ const Movies = (props) => {
 						))}
 					</ol>
 					<div className="modal-footer">
-						<button>Go back</button>
+						<button onClick={handleWatchSingleMovieInfo}>
+							Go back
+						</button>
 					</div>
 				</div>
 			</div>
