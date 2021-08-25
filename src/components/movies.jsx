@@ -25,9 +25,7 @@ const Movies = (props) => {
 	const handleWatchSingleMovieInfo = () => {
 		setWatchSpecific(!watchSpecific);
 	};
-	/*
-		was supposed to be a modal but became a new view, oh well
-*/
+
 	const Modal = () => {
 		return (
 			<div className="modal" onClick={handleWatchSingleMovieInfo}>
